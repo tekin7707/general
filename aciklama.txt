@@ -9,6 +9,10 @@ cordova run browser
 ng serve -o --port 4201
 
 -----
+node_modules klasörünü git e göndermez
+
+echo "node_modules" >> .gitignore
+-----
 git push origin master
 tekin7707
 Mt777777!.
