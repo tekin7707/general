@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LadService } from 'app/services/lad.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/services/auth.service';
-import { User, ladModel } from 'app/models/dataModel';
+import { User } from 'app/models/dataModel';
 declare var $: any;
 
 @Component({
@@ -13,17 +12,14 @@ declare var $: any;
 export class LadListComponent implements OnInit {
   loading:boolean=false;
   user:User;
-  lads:ladModel[]=[];
 
   constructor(
     private route:Router,
-    private ladService:LadService,
     private authService:AuthService
   ) { }
 
   ngOnInit() {
     this.user = this.authService.getLoginUser();
-    this.getMyLads();
   }
 
   showNotification(type, message) {
@@ -50,23 +46,5 @@ export class LadListComponent implements OnInit {
       });
   }  
 
-  async getMyLads(){
-    this.loading=true;
-    let r = await this.ladService.getMyLads();
-    if (r.status == 200) {
-      this.lads = r.data.data;
-      console.log(r);
-      // this.showNotification('success', 'Success');
-      setTimeout(() => {
-        this.loading=false;
-      }, 100);
-      }
-    else {
-      this.loading=false;
-      this.showNotification('danger', r.message );
-      console.log(r);
-    }
-  }
 
-  
 }

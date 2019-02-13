@@ -10,7 +10,7 @@
                             <i class="material-icons">content_copy</i>
                         </div>
                         <p class="card-category">Your Lads</p>
-                        <h3 class="card-title">{{summerize.ladCount}}/50
+                        <h3 class="card-title">
                             <small></small>
                         </h3>
                     </div>
@@ -28,7 +28,7 @@
                             <i class="material-icons">store</i>
                         </div>
                         <p class="card-category">Rating</p>
-                        <h3 class="card-title">{{summerize.Rating}}</h3>
+                        <h3 class="card-title">0</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -44,7 +44,7 @@
                             <i class="material-icons">info_outline</i>
                         </div>
                         <p class="card-category">Played Lads</p>
-                        <h3 class="card-title" *ngIf="myPlayLads">{{myPlayLads.length}}</h3>
+                        <h3 class="card-title" >0</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -106,12 +106,7 @@
                                             <th>Value</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr *ngFor="let lad of summerize.fiveLads" routerLink="../lad-action/{{lad._id}}">
-                                            <td>{{lad.caption}}</td>
-                                            <td>{{lad.ladValue}}</td>
-                                        </tr>
-                                    </tbody>
+
                                 </table>
                             </div>
                             <div class="tab-pane" id="messages">
@@ -122,16 +117,7 @@
                                             <th>Played</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr *ngFor="let playLad of myPlayLads">
-                                            <td>
-                                                {{playLad.ladCaption}}
-                                                <br>
-                                                {{playLad.ladItemCaption}} (will earn {{playLad.ladItemRate * playLad.actionValue}})
-                                            </td>
-                                            <td>{{playLad.actionValue}}</td>
-                                        </tr>
-                                    </tbody>
+
                                 </table>
                             </div>
                         </div>
@@ -145,20 +131,7 @@
                         <p class="card-category">New Lads</p>
                     </div>
                     <div class="card-body table-responsive">
-                        <table class="table table-hover">
-                            <thead class="text-warning">
-                                <th>date</th>
-                                <th>sales</th>
-                                <th>forecast</th>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let m of _ml">
-                                    <td>{{m.index|date}}</td>
-                                    <td>{{m.sales| number : '1.2-2'}}</td>
-                                    <td>{{m.forecast| number : '1.2-2'}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+table here
                     </div>
                 </div>
             </div>

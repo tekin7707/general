@@ -23,8 +23,6 @@ import {
   MatNativeDateModule,
   MatProgressBarModule
 } from '@angular/material';
-import { LadDetailComponent } from 'app/lad/lad-detail/lad-detail.component';
-import { LadActionComponent } from 'app/lad/lad-action/lad-action.component';
 
 @NgModule({
   imports: [
@@ -50,9 +48,7 @@ import { LadActionComponent } from 'app/lad/lad-action/lad-action.component';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    LadListComponent,
-    LadDetailComponent,
-    LadActionComponent
+    LadListComponent
   ]
 })
 

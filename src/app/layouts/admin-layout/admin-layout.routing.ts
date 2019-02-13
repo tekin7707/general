@@ -10,8 +10,6 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AuthGuard } from 'app/guards/auth.guard';
 import { LadListComponent } from 'app/lad/lad-list/lad-list.component';
-import { LadDetailComponent } from 'app/lad/lad-detail/lad-detail.component';
-import { LadActionComponent } from 'app/lad/lad-action/lad-action.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -66,6 +64,4 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications', component: NotificationsComponent },
     { path: 'upgrade', component: UpgradeComponent },
     { path: 'ladlist', component: LadListComponent , canActivate: [AuthGuard]},
-    { path: 'lad-detail/:mode/:id', component: LadDetailComponent , canActivate: [AuthGuard]},
-    { path: 'lad-action/:id', component: LadActionComponent , canActivate: [AuthGuard]},
 ];

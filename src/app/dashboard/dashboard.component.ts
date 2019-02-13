@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
-import { User, ladModel, mlModel } from 'app/models/dataModel';
+import { User } from 'app/models/dataModel';
 import { Router } from '@angular/router';
-import { LadService } from 'app/services/lad.service';
 import { AuthService } from 'app/services/auth.service';
-import { testService } from 'app/services/test.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,15 +12,9 @@ import { testService } from 'app/services/test.service';
 export class DashboardComponent implements OnInit {
   loading: boolean = false;
   user: User;
-  lads: ladModel[] = [];
-  summerize: any = { fiveLads :[],ladCount: 0, rating: 0 };
-  myPlayLads:any;
-  _ml:mlModel[];
   constructor(
     private route: Router,
-    private ladService: LadService,
-    private authService: AuthService,
-    private ts:testService
+    private authService: AuthService
   ) { }
 
   startAnimationForLineChart(chart) {
@@ -83,58 +75,9 @@ export class DashboardComponent implements OnInit {
   };
 
 
-  async getMyPlayLads() {
-    this.loading = true;
-    let r = await this.ladService.getMyPlayLads();
-    if (r.status == 200) {
-      this.myPlayLads = r.data.data;
-      console.log(this.myPlayLads);
-      this.loading = false;
-    }
-    else {
-      this.loading = false;
-      this.authService.showNotification('danger', r.message);
-      console.log(r);
-    }
-  }  
-
-  async TestIt() {
-    this.loading = true;
-    let r = await this.ts.TestIt();
-    if (r.status == 200) {
-      this._ml=JSON.parse(r.data);
-      console.log(this._ml);
-      this.loading = false;
-    }
-    else {
-      this.loading = false;
-      this.authService.showNotification('danger', r.message);
-      console.log(r);
-    }
-  }  
-
-  async getSummerize() {
-    this.loading = true;
-    let r = await this.ladService.getSummerize();
-    if (r.status == 200) {
-      this.summerize = r.data.data;
-      console.log(r);
-      // this.authService.showNotification('success', 'Success');
-      this.loading = false;
-    }
-    else {
-      this.loading = false;
-      this.authService.showNotification('danger', r.message);
-      console.log(r);
-    }
-  }
-
-
   ngOnInit() {
     this.user = this.authService.getLoginUser();
-    this.getSummerize();
-    this.getMyPlayLads();
-    this.TestIt();
+
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     const dataDailySalesChart: any = {
       labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
