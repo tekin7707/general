@@ -15,7 +15,7 @@ echo "node_modules" >> .gitignore
 -----
 git push origin master
 tekin7707
-Mt777777!.
+Mt777777
 -----
 
 -200	Success         -201 	Created
